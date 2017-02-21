@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using SaveTogether.DAL.Context;
 using SaveTogether.DAL.Entities;
 
-namespace SaveTogether.Models
+namespace SaveTogether.Controllers
 {
     public class DonationsController : Controller
     {

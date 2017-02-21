@@ -8,107 +8,88 @@ using System.Web;
 using System.Web.Mvc;
 using SaveTogether.DAL.Context;
 using SaveTogether.DAL.Entities;
-using SaveTogether.Interfaces;
 
-namespace SaveTogether.Models
+namespace SaveTogether.Controllers
 {
-    public class UsersController : Controller
+    public class CountriesController : Controller
     {
         private SaveTogetherContext db = new SaveTogetherContext();
 
-        // GET: Users
+        // GET: Countries
         public ActionResult Index()
         {
-            List<IPerson> userList = new List<IPerson>();
-            userList.AddRange(db.Subscribers.ToList());
-            userList.AddRange(db.Customers.ToList());
-            return View(userList);
+            return View(db.Countries.ToList());
         }
 
-        // GET: Users/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
-
-        // GET: Users/Create
+        // GET: Countries/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Countries/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,Email,Name,Password,SecondName,DateOfBitrth")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,Name")] Country country)
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customer);
+                db.Countries.Add(country);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(customer);
+            return View(country);
         }
 
-        // GET: Users/Edit/0
+        // GET: Countries/Edit/0
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            Country country = db.Countries.Find(id);
+            if (country == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(country);
         }
 
-        // POST: Users/Edit/0
+        // POST: Countries/Edit/0
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Email,Name,Password,SecondName,DateOfBitrth")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,Name")] Country country)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                db.Entry(country).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(customer);
+            return View(country);
         }
 
-        // GET: Users/Delete/0
+        // GET: Countries/Delete/0
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            Country country = db.Countries.Find(id);
+            if (country == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(country);
         }
 
-        // POST: Users/Delete/0
+        // POST: Countries/Delete/0
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
+            Country country = db.Countries.Find(id);
+            db.Countries.Remove(country);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

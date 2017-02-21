@@ -211,15 +211,15 @@
     <Compile Include="DAL\Entities\Country.cs" />
     <Compile Include="DAL\Entities\Customer.cs" />
     <Compile Include="DAL\Entities\Donation.cs" />
-    <Compile Include="Models\CountriesController.cs" />
-    <Compile Include="Models\DonationsController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="DAL\Entities\Question.cs" />
     <Compile Include="DAL\Entities\Region.cs" />
     <Compile Include="DAL\Entities\Subscriber.cs" />
-    <Compile Include="Models\RegionsController.cs" />
-    <Compile Include="Models\UsersController.cs" />
+    <Compile Include="Controllers\RegionsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -235,6 +235,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

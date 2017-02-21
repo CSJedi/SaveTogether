@@ -8,108 +8,107 @@ using System.Web;
 using System.Web.Mvc;
 using SaveTogether.DAL.Context;
 using SaveTogether.DAL.Entities;
+using SaveTogether.Interfaces;
 
-namespace SaveTogether.Models
+namespace SaveTogether.Controllerss
 {
-    public class RegionsController : Controller
+    public class UsersController : Controller
     {
         private SaveTogetherContext db = new SaveTogetherContext();
 
-        // GET: Regions
+        // GET: Users
         public ActionResult Index()
         {
-            var regions = db.Regions.Include(r => r.Country);
-            return View(regions.ToList());
+            List<IPerson> userList = new List<IPerson>();
+            userList.AddRange(db.Subscribers.ToList());
+            userList.AddRange(db.Customers.ToList());
+            return View(userList);
         }
 
-        // GET: Regions/Details/0
+        // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Region region = db.Regions.Find(id);
-            if (region == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(region);
+            return View(customer);
         }
 
-        // GET: Regions/Create
+        // GET: Users/Create
         public ActionResult Create()
         {
-            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
             return View();
         }
 
-        // POST: Regions/Create
+        // POST: Users/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,Name,CountryId,Population")] Region region)
+        public ActionResult Create([Bind(Include = "Id,Email,Name,Password,SecondName,DateOfBitrth")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Regions.Add(region);
+                db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name", region.CountryId);
-            return View(region);
+            return View(customer);
         }
 
-        // GET: Regions/Edit/0
+        // GET: Users/Edit/0
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Region region = db.Regions.Find(id);
-            if (region == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name", region.CountryId);
-            return View(region);
+            return View(customer);
         }
 
-        // POST: Regions/Edit/0
+        // POST: Users/Edit/0
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Name,CountryId,Population")] Region region)
+        public ActionResult Edit([Bind(Include = "Id,Email,Name,Password,SecondName,DateOfBitrth")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(region).State = EntityState.Modified;
+                db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name", region.CountryId);
-            return View(region);
+            return View(customer);
         }
 
-        // GET: Regions/Delete/0
+        // GET: Users/Delete/0
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Region region = db.Regions.Find(id);
-            if (region == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(region);
+            return View(customer);
         }
 
-        // POST: Regions/Delete/0
+        // POST: Users/Delete/0
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Region region = db.Regions.Find(id);
-            db.Regions.Remove(region);
+            Customer customer = db.Customers.Find(id);
+            db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
