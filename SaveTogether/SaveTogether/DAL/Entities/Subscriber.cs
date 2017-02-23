@@ -1,18 +1,11 @@
-﻿using SaveTogether.Interfaces;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SaveTogether.DAL.Entities
 {
-    public class Subscriber: IPerson
+    public class Subscriber: IdentityUser
     {
-        [Key]
-        public int Id { get; set; }
 
-        [Required]
-        public string Email { get; set; }
-
-        [Required]
-        public string Name { get; set; }
     }
 }

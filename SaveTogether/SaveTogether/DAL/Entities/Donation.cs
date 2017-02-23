@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using SaveTogether.Interfaces;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SaveTogether.DAL.Entities
 {
@@ -23,7 +23,7 @@ namespace SaveTogether.DAL.Entities
         public int? RegionId { get; set; }
 
         [ForeignKey("PersonId")]
-        public IPerson Person { get; set; }
+        public IdentityUser Person { get; set; }
 
         [Required]
         public int? PersonId { get; set; }

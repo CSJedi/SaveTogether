@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SaveTogether.DAL.Context;
 using SaveTogether.DAL.Entities;
-using SaveTogether.Interfaces;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SaveTogether.Controllerss
 {
@@ -19,7 +19,7 @@ namespace SaveTogether.Controllerss
         // GET: Users
         public ActionResult Index()
         {
-            List<IPerson> userList = new List<IPerson>();
+            List<IdentityUser> userList = new List<IdentityUser>();
             userList.AddRange(db.Subscribers.ToList());
             userList.AddRange(db.Customers.ToList());
             return View(userList);

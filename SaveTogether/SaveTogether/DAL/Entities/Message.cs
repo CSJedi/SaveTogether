@@ -2,6 +2,7 @@
 using SaveTogether.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SaveTogether.DAL.Entities
 {
@@ -17,7 +18,7 @@ namespace SaveTogether.DAL.Entities
         public DateTime MessageDateTime { get; set; }
 
         [ForeignKey("PersonId")]
-        public IPerson Person { get; set; }
+        public IdentityUser Person { get; set; }
 
         [Required]
         public int? PersonId { get; set; }

@@ -8,6 +8,11 @@ namespace SaveTogether.DAL.Context
     {
         public SaveTogetherContext(): base("SaveTogetherContext") { }
 
+        public static SaveTogetherContext Create()
+        {
+            return new SaveTogetherContext();
+        }
+
         public DbSet<Administrator> Administrators { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Subscriber> Subscribers { get; set; }
