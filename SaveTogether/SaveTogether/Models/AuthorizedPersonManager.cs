@@ -7,16 +7,16 @@ using SaveTogether.DAL.Context;
 
 namespace SaveTogether.Models
 {
-    public class AutorizedPersonManager: UserManager<AuthorizedPerson>
+    public class AuthorizedPersonManager: UserManager<AuthorizedPerson>
     {
-        public AutorizedPersonManager(IUserStore<AuthorizedPerson> store) : base(store) 
+        public AuthorizedPersonManager(IUserStore<AuthorizedPerson> store) : base(store) 
         {
         }
 
-        public static AutorizedPersonManager Create(IdentityFactoryOptions<AutorizedPersonManager> options, IOwinContext context)
+        public static AuthorizedPersonManager Create(IdentityFactoryOptions<AuthorizedPersonManager> options, IOwinContext context)
         {
             SaveTogetherContext db = context.Get<SaveTogetherContext>();
-            AutorizedPersonManager manager = new AutorizedPersonManager(new UserStore<AuthorizedPerson>(db));
+            AuthorizedPersonManager manager = new AuthorizedPersonManager(new UserStore<AuthorizedPerson>(db));
             return manager;
         }
     }

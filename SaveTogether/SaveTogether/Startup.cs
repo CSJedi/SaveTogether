@@ -14,7 +14,7 @@ namespace SaveTogether
         public void Configuration(IAppBuilder app)
         {
             app.CreatePerOwinContext<SaveTogetherContext>(SaveTogetherContext.Create);
-            app.CreatePerOwinContext<AutorizedPersonManager>(AutorizedPersonManager.Create);
+            app.CreatePerOwinContext<AuthorizedPersonManager>(AuthorizedPersonManager.Create);
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,

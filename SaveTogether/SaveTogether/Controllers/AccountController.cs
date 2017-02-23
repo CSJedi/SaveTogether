@@ -1,14 +1,59 @@
-﻿//using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using SaveTogether.DAL.Context;
+using SaveTogether.DAL.Entities;
+using SaveTogether.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+namespace SaveTogether.Controllers
+{
+    public class AccountController: Controller
+    {
+        private AuthorizedPersonManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<AuthorizedPersonManager>();
+            }
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                AuthorizedPerson user = new Customer { UserName = model.UserName, Email = model.Email, SecondName = model.SecondName, DateOfBitrth = model.DateOfBitrth };
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    foreach (string error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    }
+                }
+            }
+            return View(model);
+        }
+    }
+}
+
 //using System.Globalization;
 //using System.Linq;
 //using System.Security.Claims;
-//using System.Threading.Tasks;
-//using System.Web;
-//using System.Web.Mvc;
-//using Microsoft.AspNet.Identity;
-//using Microsoft.AspNet.Identity.Owin;
 //using Microsoft.Owin.Security;
-//using SaveTogether.Models;
 
 //namespace SaveTogether.Controllers
 //{
@@ -156,7 +201,7 @@
 //                if (result.Succeeded)
 //                {
 //                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
 //                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
 //                    // Send an email with this link
 //                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

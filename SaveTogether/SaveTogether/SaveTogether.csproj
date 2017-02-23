@@ -212,7 +212,7 @@
     <Compile Include="DAL\Entities\Donation.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\DonationsController.cs" />
-    <Compile Include="Models\AutorizedPersonManager.cs" />
+    <Compile Include="Models\AuthorizedPersonManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="DAL\Entities\Question.cs" />
@@ -220,6 +220,7 @@
     <Compile Include="DAL\Entities\Subscriber.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
