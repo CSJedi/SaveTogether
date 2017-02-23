@@ -1,5 +1,10 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using SaveTogether.Models;
+using SaveTogether.DAL.Context;
+using SaveTogether.DAL.Entities;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.AspNet.Identity;
 
 [assembly: OwinStartupAttribute(typeof(SaveTogether.Startup))]
 namespace SaveTogether
@@ -8,7 +13,13 @@ namespace SaveTogether
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            app.CreatePerOwinContext<SaveTogetherContext>(SaveTogetherContext.Create);
+            app.CreatePerOwinContext<AutorizedPersonManager>(AutorizedPersonManager.Create);
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/Account/Login"),
+            });
         }
     }
 }
