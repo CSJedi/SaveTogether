@@ -6,6 +6,6 @@ namespace SaveTogether.DAL.Entities
 {
     public class Customer: AuthorizedPerson
     {
-
+        
     }
 }

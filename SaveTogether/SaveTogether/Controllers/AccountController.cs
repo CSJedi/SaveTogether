@@ -31,7 +31,7 @@ namespace SaveTogether.Controllers
         {
             if (ModelState.IsValid)
             {
-                AuthorizedPerson user = new Customer { UserName = model.UserName, Email = model.Email, SecondName = model.SecondName, DateOfBitrth = model.DateOfBitrth };
+                AuthorizedPerson user = new Customer { UserName = model.UserName, Email = model.Email, SecondName = model.SecondName, DateOfBirth = model.DateOfBirth };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
