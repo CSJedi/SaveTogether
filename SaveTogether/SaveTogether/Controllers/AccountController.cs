@@ -9,6 +9,9 @@ using SaveTogether.DAL.Entities;
 using SaveTogether.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Security.Claims;
+using Microsoft.Owin.Security;
+
 namespace SaveTogether.Controllers
 {
     public class AccountController: Controller
@@ -32,40 +35,69 @@ namespace SaveTogether.Controllers
             if (ModelState.IsValid)
             {
                 AuthorizedPerson user = new Customer { UserName = model.UserName, Email = model.Email, SecondName = model.SecondName, DateOfBirth = model.DateOfBirth };
-                try
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
                 {
-                    IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-                    if (result.Succeeded)
-                    {
-                        return RedirectToAction("Login", "Account");
-                    }
-                    else
-                    {
-                        foreach (string error in result.Errors)
-                        {
-                            ModelState.AddModelError("", error);
-                        }
-                    }
+                    return RedirectToAction("Login", "Account");
                 }
-                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                else
                 {
-                    Exception raise = dbEx;
-                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    foreach (string error in result.Errors)
                     {
-                        foreach (var validationError in validationErrors.ValidationErrors)
-                        {
-                            string message = string.Format("{0}:{1}",
-                                validationErrors.Entry.Entity.ToString(),
-                                validationError.ErrorMessage);
-                            // raise a new exception nesting  
-                            // the current instance as InnerException  
-                            raise = new InvalidOperationException(message, raise);
-                        }
+                        ModelState.AddModelError("", error);
                     }
-                    throw raise;
                 }
             }
             return View(model);
+        }
+
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.returnUrl = returnUrl;
+            return View();
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                AuthorizedPerson customer = await UserManager.FindAsync(model.Email, model.Password);
+                if(customer == null)
+                {
+                    ModelState.AddModelError("", "Wrong login or password.");
+                }
+                else
+                {
+                    ClaimsIdentity claim = await UserManager.CreateIdentityAsync(customer, DefaultAuthenticationTypes.ApplicationCookie);
+                    AuthenticationManager.SignOut();
+                    AuthenticationManager.SignIn(new AuthenticationProperties
+                    {
+                        IsPersistent = true
+                    }, claim);
+
+                    if (String.IsNullOrEmpty(returnUrl))
+                        return RedirectToAction("Index", "Home");
+                    return Redirect(returnUrl);
+                }
+            }
+            ViewBag.returnUrl = returnUrl;
+            return View(model);
+        }
+
+        public ActionResult Logout()
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }

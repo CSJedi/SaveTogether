@@ -214,6 +214,7 @@
     <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Models\AuthorizedPersonManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="DAL\Entities\Question.cs" />
     <Compile Include="DAL\Entities\Region.cs" />
