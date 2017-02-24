@@ -32,17 +32,37 @@ namespace SaveTogether.Controllers
             if (ModelState.IsValid)
             {
                 AuthorizedPerson user = new Customer { UserName = model.UserName, Email = model.Email, SecondName = model.SecondName, DateOfBirth = model.DateOfBirth };
-                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                try
                 {
-                    return RedirectToAction("Login", "Account");
-                }
-                else
-                {
-                    foreach (string error in result.Errors)
+                    IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
                     {
-                        ModelState.AddModelError("", error);
+                        return RedirectToAction("Login", "Account");
                     }
+                    else
+                    {
+                        foreach (string error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error);
+                        }
+                    }
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    Exception raise = dbEx;
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            string message = string.Format("{0}:{1}",
+                                validationErrors.Entry.Entity.ToString(),
+                                validationError.ErrorMessage);
+                            // raise a new exception nesting  
+                            // the current instance as InnerException  
+                            raise = new InvalidOperationException(message, raise);
+                        }
+                    }
+                    throw raise;
                 }
             }
             return View(model);

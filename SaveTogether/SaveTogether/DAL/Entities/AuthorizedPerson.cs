@@ -9,6 +9,6 @@ namespace SaveTogether.DAL.Entities
     {
         public string SecondName { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
     }
 }

@@ -6,7 +6,6 @@ namespace SaveTogether.DAL.Entities
 {
     public class Administrator: AuthorizedPerson
     {
-        [Required]
-        public string PhoneNumber { get; set; }
+
     }
 }

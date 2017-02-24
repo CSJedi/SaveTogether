@@ -13,7 +13,7 @@ namespace SaveTogether.Models
 
         public string SecondName { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

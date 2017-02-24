@@ -17,9 +17,9 @@ namespace SaveTogether.DAL.Entities
         public DateTime MessageDateTime { get; set; }
 
         [ForeignKey("PersonId")]
-        public IdentityUser Person { get; set; }
+        public virtual IdentityUser Person { get; set; }
 
         [Required]
-        public int? PersonId { get; set; }
+        public string PersonId { get; set; }
     }
 }
