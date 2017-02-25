@@ -18,14 +18,14 @@
             <div id="header" class="container">
                 <div id="logo">
                     <h1>
-                        @Html.ActionLink("Save together", "Index", "Home", new { area = "" }, new { @class = "icon icon-leaf" })
+                        @Html.ActionLink("Save together", "Index", "Home", new { area = "" })
                     </h1>
                 </div>
                 <div id="menu">
                     <ul>
-                        <li>@Html.ActionLink("About lemurs", "About", "Home")</li>
-                        <li>@Html.ActionLink("Map of problem regions", "Map", "Home")</li>
                         <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Map of problem regions", "Map", "Home")</li>
+                        <li>@Html.ActionLink("About lemurs", "About", "Home")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
