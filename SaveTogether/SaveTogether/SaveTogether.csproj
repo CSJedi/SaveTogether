@@ -223,6 +223,7 @@
   <ItemGroup>
     <Content Include="Content\Images\bg01.png" />
     <Content Include="Content\Images\header.jpg" />
+    <Content Include="Content\Images\Lemurs.jpg" />
     <Content Include="Content\Images\logo.ico" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Styles\default.css" />
