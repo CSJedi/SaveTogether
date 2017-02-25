@@ -209,12 +209,12 @@
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Models\AuthorizedPersonManager.cs" />
+    <Compile Include="Models\EditModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="DAL\Entities\Question.cs" />
     <Compile Include="DAL\Entities\Region.cs" />
     <Compile Include="DAL\Entities\Subscriber.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -294,12 +294,9 @@
     <Content Include="Views\Regions\Details.cshtml" />
     <Content Include="Views\Regions\Edit.cshtml" />
     <Content Include="Views\Regions\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Home\Map.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Account\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
