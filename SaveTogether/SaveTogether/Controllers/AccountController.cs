@@ -122,6 +122,21 @@ namespace SaveTogether.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public async Task<ActionResult> Edit()
+        {
+            AuthorizedPerson user = await UserManager.FindByEmailAsync(User.Identity.Name);
+            if (user != null)
+            {
+                EditModel model = new EditModel {
+                    Email = user.Email,
+                    UserName = user.UserName,
+                    SecondName = user.SecondName,
+                    DateOfBirth = user.DateOfBirth };
+                return View(model);
+            }
+            return RedirectToAction("Login", "Account");
+        }
+
         [HttpPost]
         public async Task<ActionResult> Edit(EditModel model)
         {

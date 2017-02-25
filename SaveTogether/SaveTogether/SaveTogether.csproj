@@ -296,7 +296,7 @@
     <Content Include="Views\Regions\Index.cshtml" />
     <Content Include="Views\Home\Map.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
-    <Content Include="Views\Account\View.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
