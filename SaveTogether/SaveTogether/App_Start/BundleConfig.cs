@@ -22,7 +22,9 @@ namespace SaveTogether
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/Styles/bootstrap.css",
-                      "~/Content/Styles/site.css"));
+                      "~/Content/Styles/default.css",
+                      "~/Content/Styles/fonts.css",
+                      "~/Content/Styles/Site.css"));
         }
     }
 }
