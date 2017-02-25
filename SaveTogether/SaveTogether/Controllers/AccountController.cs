@@ -94,7 +94,7 @@ namespace SaveTogether.Controllers
             return View(model);
         }
 
-        public ActionResult Logout()
+        public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
             return RedirectToAction("Login");

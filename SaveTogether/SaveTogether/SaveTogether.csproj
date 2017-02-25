@@ -192,19 +192,15 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\Context\SaveTogetherContext.cs" />
     <Compile Include="DAL\Entities\Message.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="DAL\Entities\AuthorizedPerson.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="DAL\Entities\Administrator.cs" />
     <Compile Include="DAL\Entities\Answer.cs" />
     <Compile Include="DAL\Entities\Country.cs" />
@@ -213,9 +209,7 @@
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Models\AuthorizedPersonManager.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="DAL\Entities\Question.cs" />
     <Compile Include="DAL\Entities\Region.cs" />
     <Compile Include="DAL\Entities\Subscriber.cs" />
