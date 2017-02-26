@@ -22,6 +22,34 @@ namespace SaveTogether.Controllers
             return View(regions.ToList());
         }
 
+        //public JsonResult GetData()
+        //{
+        //    List<Region> stations = new List<Region>();
+        //    stations.Add(new Region()
+        //    {
+        //        Id = 1,
+        //        Name = "Lenin library",
+        //        GeoLat = 37.610489,
+        //        GeoLong = 55.752308
+        //    });
+        //    stations.Add(new Region()
+        //    {
+        //        Id = 2,
+        //        Name = "Alexander garden",
+        //        GeoLat = 37.608644,
+        //        GeoLong = 55.75226
+        //    });
+        //    stations.Add(new Region()
+        //    {
+        //        Id = 3,
+        //        Name = "Borovitskaya",
+        //        GeoLat = 37.609073,
+        //        GeoLong = 55.750509
+        //    });
+
+        //    return Json(stations, JsonRequestBehavior.AllowGet);
+        //}
+
         // GET: Regions/Details/0
         public ActionResult Details(int? id)
         {

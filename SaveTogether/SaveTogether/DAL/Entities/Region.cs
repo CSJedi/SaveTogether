@@ -18,5 +18,9 @@ namespace SaveTogether.DAL.Entities
 
         [Required]
         public int Population { get; set; }
+
+        public double GeoLong { get; set; } 
+
+        public double GeoLat { get; set; }
     }
 }
