@@ -23,9 +23,18 @@
                 </div>
                 <div id="menu">
                     <ul>
-                        <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Map of problem regions", "Map", "Home")</li>
-                        <li>@Html.ActionLink("About lemurs", "About", "Home")</li>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Map of problem regions", "Map", "Home")</li>
+                            <li>@Html.ActionLink("About lemurs", "About", "Home")</li>
+                        }
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

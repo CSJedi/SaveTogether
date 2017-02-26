@@ -15,6 +15,7 @@ namespace SaveTogether
         {
             app.CreatePerOwinContext<SaveTogetherContext>(SaveTogetherContext.Create);
             app.CreatePerOwinContext<AuthorizedPersonManager>(AuthorizedPersonManager.Create);
+            app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
