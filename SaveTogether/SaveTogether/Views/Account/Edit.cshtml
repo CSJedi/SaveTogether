@@ -1,0 +1,34 @@
+﻿@model SaveTogether.Models.EditModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit profile</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary(true, "")
+        <div>
+            <p>Email: @Html.EditorFor(model => model.Email)</p>
+        </div>
+        <div>
+            <p>Name: @Html.EditorFor(model => model.UserName)</p>
+        </div>
+        <div>
+            <p>Second name: @Html.EditorFor(model => model.SecondName)</p>
+        </div>
+        <div>
+            <p>Date of birth: @Html.EditorFor(model => model.DateOfBirth)</p>
+        </div>
+
+        <div>
+            <div>
+                <input type="submit" class="icon icon-ok button" value="Save" />
+            </div>
+        </div>
+    </div>
+}

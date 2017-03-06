@@ -194,7 +194,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AppRolesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\Context\SaveTogetherContext.cs" />
     <Compile Include="DAL\Entities\Message.cs" />
@@ -209,18 +208,14 @@
     <Compile Include="DAL\Entities\Donation.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\DonationsController.cs" />
-    <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AuthorizedPersonManager.cs" />
-    <Compile Include="Models\CreateRoleModel.cs" />
     <Compile Include="Models\EditModel.cs" />
-    <Compile Include="Models\EditRoleModel .cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="DAL\Entities\Question.cs" />
     <Compile Include="DAL\Entities\Region.cs" />
     <Compile Include="DAL\Entities\Subscriber.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Models\RegisterModel.cs" />
-    <Compile Include="Models\AppRoleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -306,9 +301,6 @@
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Home\Map.cshtml" />
-    <Content Include="Views\AppRoles\Index.cshtml" />
-    <Content Include="Views\AppRoles\Create.cshtml" />
-    <Content Include="Views\AppRoles\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

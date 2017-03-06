@@ -25,9 +25,9 @@
                     <ul>
                         @if (User.IsInRole("Administrator"))
                         {
-                            <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("List of users", "Index", "Users")</li>
+                            <li>@Html.ActionLink("List of regions", "Index", "Regions")</li>
+                            <li>@Html.ActionLink("List of donations", "Index", "Donations")</li>
                         }
                         else
                         {
