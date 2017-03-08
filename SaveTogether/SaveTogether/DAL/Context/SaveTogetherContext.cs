@@ -20,7 +20,6 @@ namespace SaveTogether.DAL.Context
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Region> Regions { get; set; }
-        public DbSet<Country> Countries { get; set; }
         public DbSet<Donation> Donations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -8,19 +8,13 @@ namespace SaveTogether.DAL.Entities
         [Key]
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
-        [ForeignKey("CountryId")]
-        public Country Country { get; set; }
-
-        [Required]
-        public int? CountryId { get; set; }
+        public string Description { get; set; }
 
         [Required]
         public int Population { get; set; }
 
-        public double GeoLong { get; set; } 
-
-        public double GeoLat { get; set; }
     }
 }
