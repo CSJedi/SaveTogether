@@ -23,7 +23,7 @@
                 </div>
                 <div id="menu">
                     <ul>
-                        @if (User.IsInRole("Administrator"))
+                        @if (User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("List of users", "Index", "Users")</li>
                             <li>@Html.ActionLink("List of regions", "Index", "Regions")</li>

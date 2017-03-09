@@ -11,6 +11,7 @@ using SaveTogether.DAL.Entities;
 
 namespace SaveTogether.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RegionsController : Controller
     {
         private SaveTogetherContext db = new SaveTogetherContext();
