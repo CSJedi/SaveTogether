@@ -1,0 +1,40 @@
+table {
+    border-spacing: 0;
+    background: #fff;
+    border: #555555 1px solid;
+}
+
+#tableItem {
+  margin: 0 auto;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+
+#tableItem thead {
+  cursor: pointer;
+  background: #698C10;
+}
+#tableItem thead tr th { 
+  font-weight: bold;
+  padding: 12px 30px;
+  padding-left: 42px;
+}
+#tableItem thead tr th span { 
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
+
+#tableItem thead tr th.headerSortUp, #tableItem thead tr th.headerSortDown {
+  background: #698C10;
+}
+
+#keywords tbody tr { 
+  color: #555;
+}
+
+#tableItem tbody tr td {
+  text-align: center;
+  padding: 15px 10px;
+}
