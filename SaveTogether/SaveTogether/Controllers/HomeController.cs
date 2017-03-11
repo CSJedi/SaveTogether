@@ -30,5 +30,11 @@ namespace SaveTogether.Controllers
         {
             return View();
         }
+
+        public void TransferToMap()
+        {
+            RedirectToRoute(Map());
+            //Server.Transfer("Page2.aspx", true);
+        }
     }
 }
