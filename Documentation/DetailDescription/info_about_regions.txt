@@ -1,0 +1,12 @@
+========================================
+Name: Forest near the villages of Madirobe 
+Description: This region is small remaining patche in Madagascar’s far northern regions.
+Population: 50
+========================================
+Name: Forest near the villages of Ankarongana
+Description: This region locate on Madagascar’s far north in the Sahafary region.
+Population: 50
+========================================
+Name: In the vicinity of Andrahona
+Description: A small mountain emerging out of the surrounding lowlands about 30 km south of Antsiranana. This species has only been recorded at elevations below 300 m.
+Population: 50

@@ -6,6 +6,7 @@ using SaveTogether.DAL.Entities;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 [assembly: OwinStartupAttribute(typeof(SaveTogether.Startup))]
 namespace SaveTogether
@@ -23,8 +24,8 @@ namespace SaveTogether
             });
 
             createRolesAndUsers();
-        }
 
+        }
 
         public void createRolesAndUsers()
         {
@@ -41,10 +42,10 @@ namespace SaveTogether
                 roleManager.Create(role);
 
                 var user = new Customer();
-                user.UserName = "AdminUser";
+                user.UserName = "Admin";
                 user.Email = "admin@gmail.com";
 
-                string userPWD = "alisa1396";
+                string userPWD = "admin123";
 
                 var chkUser = userManager.Create(user, userPWD);
 
