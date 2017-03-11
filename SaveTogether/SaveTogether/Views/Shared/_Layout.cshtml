@@ -26,7 +26,7 @@
                     <ul>
                         @if (User.IsInRole("Admin"))
                         {
-                            @*<li>@Html.ActionLink("List of users", "Index", "Users")</li>*@
+                            <li>@Html.ActionLink("List of users", "Index", "Account")</li>
                             <li>@Html.ActionLink("List of regions", "Index", "Regions")</li>
                             <li>@Html.ActionLink("List of donations", "Index", "Donations")</li>
                         }

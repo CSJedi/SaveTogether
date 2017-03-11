@@ -237,7 +237,6 @@
     <Compile Include="DAL\Entities\Donation.cs" />
     <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Models\AuthorizedPersonManager.cs" />
-    <Compile Include="Models\EditModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="DAL\Entities\Question.cs" />
     <Compile Include="DAL\Entities\Region.cs" />
@@ -297,7 +296,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -334,6 +335,9 @@
     <Content Include="Views\Regions\Details.cshtml" />
     <Content Include="Views\Regions\Edit.cshtml" />
     <Content Include="Views\Regions\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Cabinet.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

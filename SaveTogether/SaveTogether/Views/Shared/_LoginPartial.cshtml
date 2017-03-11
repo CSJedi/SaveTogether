@@ -7,7 +7,10 @@
 
     <ul>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        <li>@Html.ActionLink("Cabinet", "Edit", "Account")</li>
+        @if (!User.IsInRole("Admin"))
+        {
+            <li>@Html.ActionLink("Cabinet", "Cabinet", "Account")</li>
+        }
     </ul>
     }
 }

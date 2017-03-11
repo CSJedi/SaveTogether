@@ -32,7 +32,7 @@ namespace SaveTogether
             SaveTogetherContext context = new SaveTogetherContext();
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            var userManager = new UserManager<Customer>(new UserStore<Customer>(context));
+            var userManager = new UserManager<Administrator>(new UserStore<Administrator>(context));
 
             if (!roleManager.RoleExists("Admin"))
             {
@@ -41,7 +41,7 @@ namespace SaveTogether
                 role.Name = "Admin";
                 roleManager.Create(role);
 
-                var user = new Customer();
+                var user = new Administrator();
                 user.UserName = "Admin";
                 user.Email = "admin@gmail.com";
 

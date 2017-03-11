@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -100,10 +102,83 @@ namespace SaveTogether.Controllers
             return RedirectToAction("Login");
         }
 
-        [HttpGet]
-        public ActionResult Delete()
+        public ActionResult Index()
         {
-            return View();
+            SaveTogetherContext db = new SaveTogetherContext();
+            return View(db.Customers.ToList());
+        }
+
+        public ActionResult Details(string id)
+        {
+            SaveTogetherContext db = new SaveTogetherContext();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
+        }
+
+        public async Task<ActionResult> Cabinet()
+        {
+            AuthorizedPerson user = await UserManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        public ActionResult Edit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SaveTogetherContext db = new SaveTogetherContext();
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
+
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Email,UserName,SecondName,DateOfBirth")]Customer customer)
+        {
+            SaveTogetherContext db = new SaveTogetherContext();
+            if (ModelState.IsValid)
+            {
+                db.Entry(customer).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(customer);
+
+        }
+
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+            SaveTogetherContext db = new SaveTogetherContext();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
         }
 
         [HttpPost]
@@ -111,7 +186,7 @@ namespace SaveTogether.Controllers
         public async Task<ActionResult> DeleteConfirm()
         {
             AuthorizedPerson user = await UserManager.FindByEmailAsync(User.Identity.Name);
-            if(user != null)
+            if (user != null)
             {
                 IdentityResult result = await UserManager.DeleteAsync(user);
                 if (result.Succeeded)
@@ -120,51 +195,6 @@ namespace SaveTogether.Controllers
                 }
             }
             return RedirectToAction("Index", "Home");
-        }
-
-        public async Task<ActionResult> Edit()
-        {
-            AuthorizedPerson user = await UserManager.FindByEmailAsync(User.Identity.Name);
-            if (user != null)
-            {
-                EditModel model = new EditModel {
-                    Email = user.Email,
-                    UserName = user.UserName,
-                    SecondName = user.SecondName,
-                    DateOfBirth = user.DateOfBirth };
-                return View(model);
-            }
-            return RedirectToAction("Login", "Account");
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Edit(EditModel model)
-        {
-            AuthorizedPerson user = await UserManager.FindByEmailAsync(User.Identity.Name);
-
-            if (user != null)
-            {
-                user.Email = model.Email;
-                user.UserName = model.UserName;
-                user.SecondName = model.SecondName;
-                user.DateOfBirth = model.DateOfBirth;
-
-                IdentityResult result = await UserManager.UpdateAsync(user);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Model has an errors.");
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("", "User is not found.");
-            }
-
-            return View(model);
         }
     }
 }
