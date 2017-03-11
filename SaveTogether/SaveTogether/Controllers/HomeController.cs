@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SaveTogether.DAL.Context;
 
 namespace SaveTogether.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             return View();
@@ -20,7 +22,8 @@ namespace SaveTogether.Controllers
 
         public ActionResult Map()
         {
-            return View();
+            SaveTogetherContext db = new SaveTogetherContext();
+            return View(db.Regions.ToList());
         }
 
         public ActionResult Contact()

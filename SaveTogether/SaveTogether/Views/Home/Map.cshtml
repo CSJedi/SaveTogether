@@ -1,20 +1,25 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Map";
 }
-<div class="title">
+@model IEnumerable<SaveTogether.DAL.Entities.Region>
+<div class="title" style="margin: 1em;">
     <h2 style="text-align: center;">Map</h2>
-    @*<img src="~/Content/Images/Lepilemur_septentrionalis_range_map.png" alt="Lepilemur septentrionalis range map"/>*@
-    <div class="row">
-        <div class="col-md-6" style="padding: 10px;">
-            <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=7&center=-13.7715%2C49.5280&key=AIzaSyDcQBeDJaf5B7UopUr1_oJ2X53PLugylc4" allowfullscreen></iframe>
-        </div>
-        <div class="col-md-6">
+</div>
 
-        </div>
-    </div>
-   </div>
-
+<div class="row" style="margin: 4% 5% auto 5%;">
+    <iframe align="left" width="600" height="450" frameborder="0" style="border: 0; margin-right: 15px;" src="https://www.google.com/maps/embed/v1/view?zoom=7&center=-13.7715%2C49.5280&key=AIzaSyDcQBeDJaf5B7UopUr1_oJ2X53PLugylc4" allowfullscreen></iframe>
+    <h2>Regions: </h2>
+    <br/>
+    @foreach (var item in Model)
+    {
+        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+        <p>
+            @Html.DisplayFor(modelItem => item.Description) <br />
+        @Html.DisplayNameFor(model => model.Population): @Html.DisplayFor(modelItem => item.Population)
+    </p>
+    }
+</div>
+    <br/>
 <div class="row" align="center">
     <button type="button" class="icon icon-ok button">Subscribe</button>
     <button type="button" class="icon icon-ok button">Donate</button>
