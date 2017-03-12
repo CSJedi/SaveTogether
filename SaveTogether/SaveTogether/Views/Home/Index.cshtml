@@ -12,7 +12,16 @@
     <p>All About Wildlife has always had a lemur on our Top 10 Endangered Species list; until this year, that lemur was the greater bamboo lemur, of which perhaps fewer than 100 individuals remain. But researchers recently reported that there may be fewer than 20 of the Critically Endangered northern sportive lemurs (Lepilemur septentrionalis) left in the wild, so we decided to make a switch. According to the IUCN, the northern sportive lemur lives on and around just one small mountain at the northern tip of Madagascar. This lemur is a tiny creature, weighing less than two pounds. It has large eyes to give it better night vision.</p>
 </div>
 <div class="row">
-    <button type="button" class="icon icon-ok button">Subscribe</button>
-    <button type="button" class="icon icon-ok button" onclick="TransferToMap">Watch problem regions</button>
-    <button type="button" class="icon icon-ok button">Donate</button>
+    @using (Html.BeginForm("Subscribe", "Account", new { ReturnUrl = "" }, FormMethod.Post, new { @class = "icon icon-ok button", role = "form" }))
+    {
+        <input id="Map" type="submit" class="icon icon-ok button" style="border: none; margin: 0;" value="Subscribe">
+    }
+    @using (Html.BeginForm("Map", "Home", new { ReturnUrl = "" }, FormMethod.Post, new { @class = "icon icon-ok button", role = "form" }))
+    {
+        <input id="Map" type="submit" class="icon icon-ok button" style="border: none; margin: 0;" value="Watch problem regions">
+    }
+    @using (Html.BeginForm("Create", "Donations", new { ReturnUrl = "" }, FormMethod.Post, new { @class = "icon icon-ok button", role = "form" }))
+    {
+        <input id="Map" type="submit" class="icon icon-ok button" style="border: none; margin: 0;" value="Donate">
+    }
 </div>

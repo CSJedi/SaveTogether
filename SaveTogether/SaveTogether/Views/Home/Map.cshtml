@@ -21,6 +21,12 @@
 </div>
     <br/>
 <div class="row" align="center">
-    <button type="button" class="icon icon-ok button">Subscribe</button>
-    <button type="button" class="icon icon-ok button">Donate</button>
+    @using (Html.BeginForm("Subscribe", "Account", new { ReturnUrl = "" }, FormMethod.Post, new { @class = "icon icon-ok button", role = "form" }))
+    {
+        <input id="Map" type="submit" class="icon icon-ok button" style="border: none; margin: 0;" value="Subscribe">
+    }
+    @using (Html.BeginForm("Create", "Donations", new { ReturnUrl = "" }, FormMethod.Post, new { @class = "icon icon-ok button", role = "form" }))
+    {
+        <input id="Map" type="submit" class="icon icon-ok button" style="border: none; margin: 0;" value="Donate">
+    }
 </div>

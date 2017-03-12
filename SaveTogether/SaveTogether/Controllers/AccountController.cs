@@ -31,6 +31,11 @@ namespace SaveTogether.Controllers
             return View();
         }
 
+        public ActionResult Subscribe()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<ActionResult> Register(RegisterModel model)
         {

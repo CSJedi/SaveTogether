@@ -18,7 +18,16 @@
     <h3>Conservation</h3>
         <p>The northern sportive lemur is preyed on by the native Malagasy tree boa, which hunts the lemurs while they are sleeping in tree holes. Large birds of prey, Falconiformes and Strigiformes, are also natural predators of the lemurs. Along with these ecological threats, the arboreal lemur species are also highly threatened by human charcoal production, which still continues to remove the only remaining forest habitat of the lemurs, greatly restricting their range. L. septentrionalis is also illegally hunted as bushmeat.[13] This combination of threats has severely reduced the population of the lemurs to only a few hundred individuals, as estimated by the IUCN Red List.[1] They are classified as Critically Endangered under the IUCN Red List and are listed on CITES Appendix I, which only permits their trade in exceptional circumstances.[21] The known habitat range of the lemurs does not overlap with any protected areas, and although the Andrahona Forest is considered sacred in Madagascar, it shows signs of human incursion.</p>
 <div class="row">
-    <button type="button" class="icon icon-ok button">Subscribe</button>
-    <button type="button" class="icon icon-ok button">Watch problem regions</button>
-    <button type="button" class="icon icon-ok button">Donate</button>
+    @using (Html.BeginForm("Subscribe", "Account", new { ReturnUrl = "" }, FormMethod.Post, new { @class = "icon icon-ok button", role = "form" }))
+    {
+        <input id="Map" type="submit" class="icon icon-ok button" style="border: none; margin: 0;" value="Subscribe">
+    }
+    @using (Html.BeginForm("Map", "Home", new { ReturnUrl = "" }, FormMethod.Post, new { @class = "icon icon-ok button", role = "form" }))
+    {
+        <input id="Map" type="submit" class="icon icon-ok button" style="border: none; margin: 0;" value="Watch problem regions">
+    }
+    @using (Html.BeginForm("Create", "Donations", new { ReturnUrl = "" }, FormMethod.Post, new { @class = "icon icon-ok button", role = "form" }))
+    {
+        <input id="Map" type="submit" class="icon icon-ok button" style="border: none; margin: 0;" value="Donate">
+    }
 </div>
