@@ -30,5 +30,10 @@ namespace SaveTogether.Controllers
         {
             return View();
         }
+
+        public ActionResult Donate()
+        {
+            return View();
+        }
     }
 }
