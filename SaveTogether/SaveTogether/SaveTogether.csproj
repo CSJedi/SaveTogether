@@ -225,6 +225,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\Context\SaveTogetherContext.cs" />
     <Compile Include="DAL\Entities\Message.cs" />
     <Compile Include="Global.asax.cs">
@@ -343,6 +344,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
