@@ -37,7 +37,7 @@ namespace SaveTogether
             if (!roleManager.RoleExists("Admin"))
             {
  
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                var role = new IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
 
@@ -58,7 +58,7 @@ namespace SaveTogether
   
             if (!roleManager.RoleExists("Customer"))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                var role = new IdentityRole();
                 role.Name = "Customer";
                 roleManager.Create(role);
 
