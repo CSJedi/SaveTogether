@@ -26,12 +26,12 @@ namespace SaveTogether.Controllers
             }
         }
 
-        public ActionResult Register()
+        public async Task<ActionResult> Register()
         {
             return View();
         }
 
-        public ActionResult Subscribe()
+        public async Task<ActionResult> Subscribe()
         {
             return View();
         }
@@ -58,7 +58,7 @@ namespace SaveTogether.Controllers
             return View(model);
         }
 
-        public ActionResult Login(string returnUrl)
+        public async Task<ActionResult> Login(string returnUrl)
         {
             ViewBag.returnUrl = returnUrl;
             return View();
@@ -101,7 +101,7 @@ namespace SaveTogether.Controllers
             return View(model);
         }
 
-        public ActionResult LogOff()
+        public async Task<ActionResult> LogOff()
         {
             AuthenticationManager.SignOut();
             return RedirectToAction("Login");
@@ -109,12 +109,12 @@ namespace SaveTogether.Controllers
 
         public async Task<ActionResult> Cabinet()
         {
-            AuthorizedPerson user = await UserManager.FindByNameAsync(User.Identity.Name);
-            if (user == null)
+            Customer customer = (Customer) await UserManager.FindByNameAsync(User.Identity.Name);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(customer);
         }
 
     }

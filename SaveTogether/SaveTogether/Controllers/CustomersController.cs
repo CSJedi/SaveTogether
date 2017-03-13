@@ -18,6 +18,7 @@ namespace SaveTogether.Controllers
 {
     public class CustomersController : Controller
     {
+        private SaveTogetherContext db = new SaveTogetherContext();
         private AuthorizedPersonManager UserManager
         {
             get
@@ -26,20 +27,18 @@ namespace SaveTogether.Controllers
             }
         }
         
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            SaveTogetherContext db = new SaveTogetherContext();
-            return View(db.Customers.ToList());
+            return View(await db.Customers.ToListAsync());
         }
 
-        public ActionResult Details(string id)
+        public async Task<ActionResult> Details(string id)
         {
-            SaveTogetherContext db = new SaveTogetherContext();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            Customer customer = await db.Customers.FindAsync(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -47,14 +46,13 @@ namespace SaveTogether.Controllers
             return View(customer);
         }
 
-        public ActionResult Edit(string id)
+        public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SaveTogetherContext db = new SaveTogetherContext();
-            Customer customer = db.Customers.Find(id);
+            Customer customer = await db.Customers.FindAsync(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -64,27 +62,25 @@ namespace SaveTogether.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,UserName,SecondName,DateOfBirth")]Customer customer)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,UserName,SecondName,DateOfBirth")]Customer customer)
         {
-            SaveTogetherContext db = new SaveTogetherContext();
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(customer);
         }
 
         [HttpGet]
-        public ActionResult Delete(string id)
+        public async Task<ActionResult> Delete(string id)
         {
-            SaveTogetherContext db = new SaveTogetherContext();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            Customer customer = await db.Customers.FindAsync(id);
             if (customer == null)
             {
                 return HttpNotFound();
