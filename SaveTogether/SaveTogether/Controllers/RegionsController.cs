@@ -49,7 +49,7 @@ namespace SaveTogether.Controllers
             {
                 db.Regions.Add(region);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Regions");
             }
             return View(region);
         }
@@ -76,7 +76,7 @@ namespace SaveTogether.Controllers
             {
                 db.Entry(region).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Regions");
             }
             return View(region);
         }
@@ -102,7 +102,7 @@ namespace SaveTogether.Controllers
             Region region = await db.Regions.FindAsync(id);
             db.Regions.Remove(region);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Regions");
         }
 
         protected override void Dispose(bool disposing)
