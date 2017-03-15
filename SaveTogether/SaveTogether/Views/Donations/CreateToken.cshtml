@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <form id="paymentForm" method="post">
+
+        <span id="paymentErrors"></span>
+     
+        <div class="form-row">
+
+            <label>Name on Card</label>
+            <input data-worldpay="name" name="name" type="text" />
+        </div>
+        <div class="form-row">
+            <label>Card Number</label>
+            <input data-worldpay="number" size="20" type="text" />
+        </div>
+        <div class="form-row">
+            <label>CVC</label>
+            <input data-worldpay="cvc" size="4" type="text" />
+        </div>
+        <div class="form-row">
+            <label>Expiration (MM/YYYY)</label>
+            <input data-worldpay="exp-month" size="2" type="text" />
+            <label> / </label>
+            <input data-worldpay="exp-year" size="4" type="text" />
+        </div>
+
+        <input type="submit" value="Place Order" />
+
+    </form>
+
+
+    <script src="https://cdn.worldpay.com/v1/worldpay.js"></script>
+    <script type="text/javascript">
+        var form = document.getElementById('paymentForm');
+
+        Worldpay.useOwnForm({
+            'clientKey': 'T_C_360bc58f-f9f3-47f6-b72e-b6480d0592c7',
+            'form': form,
+            'reusable': false,
+            'callback': function (status, response) {
+                document.getElementById('paymentErrors').innerHTML = '';
+                if (response.error) {
+                    Worldpay.handleError(form, document.getElementById('paymentErrors'), response.error);
+                } else {
+                    var token = response.token;
+                    Worldpay.formBuilder(form, 'input', 'hidden', 'token', token);
+                    console.log(token);
+
+                    $.ajax({
+                        url: "/Donations/Create/",
+                        data: { token: token },
+                        success: function (data) {
+
+                        },
+                        dataType: "html",
+                        type: "POST",
+                        cache: false,
+                        error: function () {
+                            //Error Message
+                        }
+                    });
+
+                    form.submit();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

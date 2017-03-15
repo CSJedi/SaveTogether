@@ -2,18 +2,20 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Worldpay.Sdk.Enums;
 
 namespace SaveTogether.DAL.Entities
 {
     public class Donation
     {
+        //TODO: need change/add some fields for WorldPayService
         [Key]
         public int Id { get; set; }
 
         [Required]
-        public decimal Sum { get; set; }
+        public int? Sum { get; set; }
 
-        [Required]
+      //  [Required]
         public DateTime OperationDateTime { get; set; }
 
         [ForeignKey("RegionId")]
@@ -25,7 +27,10 @@ namespace SaveTogether.DAL.Entities
         [ForeignKey("PersonId")]
         public virtual IdentityUser Person { get; set; }
 
-        [Required]
+       // [Required]
         public string PersonId { get; set; }
+
+        public string Token { get; set; }
+        public CurrencyCode CurrencyCode { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using SaveTogether.DAL.Context;
 using SaveTogether.DAL.Entities;
+using SaveTogether.Services;
 
 namespace SaveTogether.Controllers
 {
@@ -36,7 +37,6 @@ namespace SaveTogether.Controllers
             }
             return View(donation);
         }
-
         public async Task<ActionResult> Create()
         {
             ViewBag.RegionId = new SelectList(db.Regions, "Id", "Name");
@@ -44,17 +44,37 @@ namespace SaveTogether.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Sum,OperationDateTime,RegionId,PersonId")] Donation donation)
+        public async Task<ActionResult> Create([Bind(Include = "Sum,RegionId")] Donation donation)
         {
             if (ModelState.IsValid)
             {
-                db.Donations.Add(donation);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("CreateToken", donation);
             }
 
             ViewBag.RegionId = new SelectList(db.Regions, "Id", "Name", donation.RegionId);
             return View(donation);
+        }
+        public async Task<ActionResult> CreateToken(Donation donation)
+        {
+            var a = donation;
+            return View(donation);
+        }
+        [HttpPost]
+        public async Task<ActionResult> CreateToken(string token, Donation donation)
+        {
+            donation.Token = token;
+            var service = new WorldPayService();
+            //TODO: test payment, handle null ref exp
+            if (service.MakePayment(donation))
+            {
+                //TODO: make saving donate
+                //db.Donations.Add(donation);
+                //await db.SaveChangesAsync();
+            }
+            //TODO: create successPayment view
+            //return Redirect(SuccessPayment);\
+            return View();
         }
 
         public async Task<ActionResult> Edit(int? id)
