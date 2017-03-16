@@ -2,28 +2,30 @@
 @{
     ViewBag.Title = "Log in";
 }
+<div style="margin: 0% 40% 0% 40%;">
+    
+     <h2>Log in</h2>
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-<div class="title">
-    <h2>Log in</h2>
+        <div>
+            @Html.ValidationSummary()
+            <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+            <p>
+                <label>Name</label><br />
+                @Html.EditorFor(x => x.Email)
+            </p>
+            <p>
+                <label>Password</label><br />
+                @Html.EditorFor(x => x.Password)
+            </p>
+            <button type="submit" class="icon icon-ok button">Log in</button>
+        </div>
+    }
+
 </div>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div>
-        @Html.ValidationSummary()
-        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
-        <p>
-            <label>Name</label><br />
-            @Html.EditorFor(x => x.Email)
-        </p>
-        <p>
-            <label>Password</label><br />
-            @Html.EditorFor(x => x.Password)
-        </p>
-        <button type="submit" class="icon icon-ok button">Log in</button>
-    </div>
-}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -8,41 +8,17 @@
     <h3>Details</h3>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Region.Name)
-        </dt>
+        
+        <dt>Name: @Html.DisplayFor(model => model.Region.Name)</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Region.Name)
-        </dd>
+        <dt>Sum: @Html.DisplayFor(model => model.Sum)</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sum)
-        </dt>
+        <dt>Date: @Html.DisplayFor(model => model.OperationDateTime)</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sum)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OperationDateTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OperationDateTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PersonId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PersonId)
-        </dd>
+        <dt>Person: @Html.DisplayFor(model => model.Person.UserName)</dt>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

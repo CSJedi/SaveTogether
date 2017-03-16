@@ -41,14 +41,15 @@ namespace SaveTogether.Models
         {
             RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
             UserManager<Administrator> userManager = new UserManager<Administrator>(new UserStore<Administrator>(db));
+            UserManager<Customer> customerManager = new UserManager<Customer>(new UserStore<Customer>(db));
 
             if (!roleManager.RoleExists("Admin"))
             {
-                var role = new IdentityRole();
+                IdentityRole role = new IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
 
-                var user = new Administrator();
+                Administrator user = new Administrator();
                 user.UserName = "Admin";
                 user.Email = "admin@gmail.com";
 
@@ -65,9 +66,23 @@ namespace SaveTogether.Models
 
             if (!roleManager.RoleExists("Customer"))
             {
-                var role = new IdentityRole();
+                IdentityRole role = new IdentityRole();
                 role.Name = "Customer";
                 roleManager.Create(role);
+
+                Customer customer = new Customer();
+                customer.UserName = "Customer";
+                customer.Email = "customer@gmail.com";
+
+                string customerRWD = "customer123";
+
+                var chkCustomer = customerManager.Create(customer, customerRWD);
+
+                if (chkCustomer.Succeeded)
+                {
+                    var result2 = customerManager.AddToRole(customer.Id, "Customer");
+
+                }
             }
         }
     }

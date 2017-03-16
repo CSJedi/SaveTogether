@@ -3,28 +3,30 @@
 @{
     ViewBag.Title = "Edit";
 }
+<div style="margin: 0% 40% 0% 40%;">
 
-<h2>Edit profile</h2>
+    <h2>Edit profile</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div>
-        @Html.ValidationSummary(true, "")
         <div>
-            <p>Email: @Html.EditorFor(model => model.Email)</p>
-        </div>
-        <div>
-            <p>Name: @Html.EditorFor(model => model.UserName)</p>
-        </div>
-        <div>
-            <p>Second name: @Html.EditorFor(model => model.SecondName)</p>
-        </div>
-        <div>
+            @Html.ValidationSummary(true, "")
             <div>
-                <input type="submit" class="icon icon-ok button" value="Save" />
+                <p>Email: @Html.EditorFor(model => model.Email)</p>
+            </div>
+            <div>
+                <p>Name: @Html.EditorFor(model => model.UserName)</p>
+            </div>
+            <div>
+                <p>Second name: @Html.EditorFor(model => model.SecondName)</p>
+            </div>
+            <div>
+                <div>
+                    <input type="submit" class="icon icon-ok button" value="Save" />
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>
