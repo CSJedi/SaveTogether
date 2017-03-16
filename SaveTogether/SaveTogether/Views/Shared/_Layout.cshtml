@@ -8,9 +8,9 @@
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
     <link href="~/Content/Styles/default.css" rel="stylesheet" />
     <link href="~/Content/Styles/fonts.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
 
@@ -33,6 +33,7 @@
                         else
                         {
                             <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Donate", "Create", "Donations")</li>
                             <li>@Html.ActionLink("Map of problem regions", "Map", "Home")</li>
                             <li>@Html.ActionLink("About lemurs", "About", "Home")</li>
                         }

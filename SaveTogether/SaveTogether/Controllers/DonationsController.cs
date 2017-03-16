@@ -100,61 +100,6 @@ namespace SaveTogether.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Donation donation = await db.Donations.FindAsync(id);
-            if (donation == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.RegionId = new SelectList(db.Regions, "Id", "Name", donation.RegionId);
-            return View(donation);
-        }
-
-        [Authorize(Roles = "Admin")]
-        [HttpPost]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Sum,OperationDateTime,RegionId,PersonId")] Donation donation)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(donation).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            ViewBag.RegionId = new SelectList(db.Regions, "Id", "Name", donation.RegionId);
-            return View(donation);
-        }
-
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Donation donation = await db.Donations.FindAsync(id);
-            if (donation == null)
-            {
-                return HttpNotFound();
-            }
-            return View(donation);
-        }
-
-        [Authorize(Roles = "Admin")]
-        [HttpPost, ActionName("Delete")]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Donation donation = await db.Donations.FindAsync(id);
-            db.Donations.Remove(donation);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
