@@ -32,9 +32,11 @@ namespace SaveTogether.Services
                 amount = donation.Sum,
                 currencyCode = donation.CurrencyCode.ToString(),
                 name = donation.Person?.UserName,
-                settlementCurrency = CurrencyCode.USD.ToString()
+                settlementCurrency = CurrencyCode.USD.ToString(),
+                orderDescription = "Donate"
             };
-            var orderResponse = worldpayRestClient.GetOrderService().Create(orderRequest);
+            OrderService orderService = worldpayRestClient.GetOrderService();
+            OrderResponse orderResponse = orderService.Create(orderRequest);
 
             return orderResponse.paymentStatus == OrderStatus.SUCCESS;
         }

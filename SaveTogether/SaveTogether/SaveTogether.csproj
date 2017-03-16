@@ -167,7 +167,7 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Worldpay.Sdk">
-      <HintPath>D:\worldpay-lib-dotnet-1.3\worldpay-sample-dotnet-3-5\Worldpay.Sdk.Examples\lib\Worldpay.Sdk.dll</HintPath>
+      <HintPath>C:\Users\Tatiana\Downloads\worldpay-lib-dotnet-master\worldpay-sample-dotnet-3-5\Worldpay.Sdk.Examples\lib\Worldpay.Sdk.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -347,6 +347,7 @@
     <Content Include="Views\Account\Subscribe.cshtml" />
     <Content Include="Views\Home\Donate.cshtml" />
     <Content Include="Views\Donations\CreateToken.cshtml" />
+    <Content Include="Views\Donations\SuccessDonate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
