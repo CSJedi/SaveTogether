@@ -31,8 +31,8 @@ namespace SaveTogether
         {
             SaveTogetherContext context = new SaveTogetherContext();
 
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            var userManager = new UserManager<Administrator>(new UserStore<Administrator>(context));
+            RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            UserManager<Administrator> userManager = new UserManager<Administrator>(new UserStore<Administrator>(context));
 
             if (!roleManager.RoleExists("Admin"))
             {

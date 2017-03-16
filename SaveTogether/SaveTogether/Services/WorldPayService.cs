@@ -24,9 +24,8 @@ namespace SaveTogether.Services
 
         public bool MakePayment(Donation donation)
         {
-            //TODO: TEST and rearange Donations
-            var worldpayRestClient = new WorldpayRestClient(Url, _serverToken);
-            var orderRequest = new OrderRequest()
+            WorldpayRestClient worldpayRestClient = new WorldpayRestClient(Url, _serverToken);
+            OrderRequest orderRequest = new OrderRequest()
             {
                 token = donation.Token,
                 amount = donation.Sum,

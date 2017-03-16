@@ -329,9 +329,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Donations\Create.cshtml" />
-    <Content Include="Views\Donations\Delete.cshtml" />
     <Content Include="Views\Donations\Details.cshtml" />
-    <Content Include="Views\Donations\Edit.cshtml" />
     <Content Include="Views\Donations\Index.cshtml" />
     <Content Include="Views\Customers\Delete.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />

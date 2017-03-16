@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using SaveTogether.DAL.Context;
 using SaveTogether.DAL.Entities;
@@ -78,21 +79,19 @@ namespace SaveTogether.Controllers
         {
             donation.Token = token;
             WorldPayService service = new WorldPayService();
-            //TODO: test payment, handle null ref exp
             if (service.MakePayment(donation))
             {
-                //TODO: make saving donate
                 donation.OperationDateTime = DateTime.Now;
-                Customer customer = (Customer)await UserManager.FindByNameAsync(User.Identity.Name);
+                IdentityUser customer = await UserManager.FindByNameAsync(User.Identity.Name);
                 if (customer != null)
                     donation.Person = customer;
 
                 db.Donations.Add(donation);
                 await db.SaveChangesAsync();
+                return RedirectToAction("SuccessDonate");
             }
-            //TODO: create successPayment view
-            return RedirectToAction("SuccessDonate");
-            //return View();
+            
+            return RedirectToAction("Create");
         }
 
         public async Task<ActionResult> SuccessDonate()
