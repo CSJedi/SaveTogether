@@ -18,6 +18,7 @@ namespace SaveTogether.Controllers
 {
     public class AccountController: Controller
     {
+        private SaveTogetherContext db = new SaveTogetherContext();
         private AuthorizedPersonManager UserManager
         {
             get
@@ -117,5 +118,31 @@ namespace SaveTogether.Controllers
             return View(customer);
         }
 
+        public async Task<ActionResult> Edit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = await db.Customers.FindAsync(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,UserName,SecondName,DateOfBirth")]Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(customer).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index", "Home");
+            }
+            return View(customer);
+        }
     }
 }

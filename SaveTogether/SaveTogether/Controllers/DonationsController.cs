@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using SaveTogether.DAL.Context;
 using SaveTogether.DAL.Entities;
@@ -84,9 +83,9 @@ namespace SaveTogether.Controllers
             {
                 //TODO: make saving donate
                 donation.OperationDateTime = DateTime.Now;
-                IdentityUser user = await UserManager.FindByNameAsync(User.Identity.Name);
-                if (user != null)
-                    donation.Person = user;
+                Customer customer = (Customer)await UserManager.FindByNameAsync(User.Identity.Name);
+                if (customer != null)
+                    donation.Person = customer;
 
                 db.Donations.Add(donation);
                 await db.SaveChangesAsync();

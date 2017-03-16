@@ -16,6 +16,7 @@ using Microsoft.Owin.Security;
 
 namespace SaveTogether.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CustomersController : Controller
     {
         private SaveTogetherContext db = new SaveTogetherContext();

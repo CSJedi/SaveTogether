@@ -348,6 +348,7 @@
     <Content Include="Views\Home\Donate.cshtml" />
     <Content Include="Views\Donations\CreateToken.cshtml" />
     <Content Include="Views\Donations\SuccessDonate.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
