@@ -36,7 +36,7 @@ namespace SaveTogether.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(Guid? id)
         {
             if (id == null)
             {
@@ -71,9 +71,9 @@ namespace SaveTogether.Controllers
 
         public async Task<ActionResult> CreateToken(Donation donation)
         {
-            //TODO: Read this ref https://developer.worldpay.com/jsonapi/docs/testing
             return View(donation);
         }
+
         [HttpPost]
         public async Task<ActionResult> CreateToken(string token, Donation donation)
         {
@@ -81,10 +81,11 @@ namespace SaveTogether.Controllers
             WorldPayService service = new WorldPayService();
             if (service.MakePayment(donation))
             {
+                donation.Id = new Guid();
                 donation.OperationDateTime = DateTime.Now;
-                IdentityUser customer = await UserManager.FindByNameAsync(User.Identity.Name);
-                if (customer != null)
-                    donation.Person = customer;
+                IdentityUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+                if (user != null)
+                    donation.Person = user;
 
                 db.Donations.Add(donation);
                 await db.SaveChangesAsync();

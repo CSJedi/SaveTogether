@@ -9,7 +9,6 @@ namespace SaveTogether.DAL.Entities
         [ForeignKey("QuestionId")]
         public Question Question { get; set; }
 
-        [Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid? QuestionId { get; set; }
 
     }

@@ -19,7 +19,6 @@ namespace SaveTogether.DAL.Entities
         [ForeignKey("RegionId")]
         public Region Region { get; set; }
 
-        [Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid? RegionId { get; set; }
 
         [ForeignKey("PersonId")]
@@ -28,6 +27,7 @@ namespace SaveTogether.DAL.Entities
         public string PersonId { get; set; }
 
         public string Token { get; set; }
+
         public CurrencyCode CurrencyCode { get; set; }
     }
 }

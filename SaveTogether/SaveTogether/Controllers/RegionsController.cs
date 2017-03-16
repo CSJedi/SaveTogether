@@ -22,7 +22,7 @@ namespace SaveTogether.Controllers
             return View(await db.Regions.ToListAsync());
         }
 
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(Guid? id)
         {
             if (id == null)
             {
@@ -54,7 +54,7 @@ namespace SaveTogether.Controllers
             return View(region);
         }
 
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
@@ -81,7 +81,7 @@ namespace SaveTogether.Controllers
             return View(region);
         }
 
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(Guid? id)
         {
             if (id == null)
             {
@@ -97,7 +97,7 @@ namespace SaveTogether.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
             Region region = await db.Regions.FindAsync(id);
             db.Regions.Remove(region);
