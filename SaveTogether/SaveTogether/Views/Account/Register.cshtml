@@ -2,51 +2,51 @@
 @{
     ViewBag.Title = "Register";
 }
-<div style="margin: 0% 40% 0% 40%;">
-    <div class="title">
+<div style="margin: 0% 40% 0% 40%;" >
+    <div class="title" style="margin:0% 5%;" >
         <h2>Register</h2>
         <span class="byline">Create a new account</span>
     </div>
 
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form"}))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary("", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.Label("Email", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            </div>
+        <div class="form-group" style="margin: 15px;">
+            @Html.Label("Email", new { @class = "col-sm-2 control-label" })
+	        <div class="col-md-10">
+				@Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "text", style = "width: 260px; height: 20px;" })
+		    </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="margin: 15px;">
             @Html.Label("Name", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-            </div>
+	        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", type = "text", style = "width: 260px; height: 20px;" })
+	        </div>
         </div>
-        <div class="form-group">
-            @Html.Label("Second name", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.SecondName, new { @class = "form-control" })
-            </div>
+        <div class="form-group" style="margin: 15px;">
+            @Html.Label("Second name", new { @class = "col-sm-2 control-label" })
+	        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.SecondName, new { @class = "form-control", type = "text", style = "width: 260px; height: 20px;" })
+	        </div>
         </div>
-        <div class="form-group">
-            @Html.Label("Password", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            </div>
+        <div class="form-group" style="margin: 15px;">
+            @Html.Label("Password", new { @class = "col-sm-2 control-label" })
+	        <div class="col-md-10">
+				@Html.PasswordFor(m => m.Password, new { @class = "form-control", type = "text", style = "width: 260px; height: 20px;" })
+	        </div>
         </div>
-        <div class="form-group">
-            @Html.Label("Password confirm", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.PasswordConfirm, new { @class = "form-control" })
-            </div>
+        <div class="form-group" style="margin: 15px;">
+            @Html.Label("Password confirm", new { @class = "col-sm-2 control-label" })
+	        <div class="col-md-10">
+				@Html.PasswordFor(m => m.PasswordConfirm, new { @class = "form-control", type = "text", style= "width: 260px; height: 20px;" })
+	        </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="submit" class="icon icon-ok button" value="Register" />
-            </div>
-        </div>
+	    @*<div class="form-group">
+            <div class="icon icon-ok button">*@
+                <button type="submit" class="icon icon-ok button" style="border: none; margin: 1em 1em 1em 3em;" value="Register">Register</button>
+            @*</div>
+      </div>*@
     }
 </div>
     @section Scripts {
