@@ -253,6 +253,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SaveTogether.mdf" />
+    <Content Include="App_Data\SaveTogether_log.ldf">
+      <DependentUpon>SaveTogether.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\bg01.png" />
@@ -347,9 +351,7 @@
     <Content Include="Views\Donations\SuccessDonate.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
