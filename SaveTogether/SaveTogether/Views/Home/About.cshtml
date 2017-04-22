@@ -20,23 +20,11 @@
 <div class="row">
     @using (Html.BeginForm("Subscribe", "Account", new { ReturnUrl = "" }, FormMethod.Post, new { @class = "icon icon-ok button", role = "form" }))
     {
-         <!-- <input id="Map" type="submit" class="icon icon-ok button" style="border: none; margin: 0;" value="Subscribe">-->
-        <div data-href="http://localhost:65106/" data-layout="button" data-size="small" data-mobile-iframe="true" style="
-    display: inline-block;
-">
-
-            <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A65106%2F&amp;src=sdkpreparse" style="
-            text-decoration: none;
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: 400;
-            font-size: 0.90em;
-            display: inline-block;
-            padding: 0.50em 3em 0.50em 2em;
-            background: #669900;
-            letter-spacing: 0.20em;">Поделиться</a>
+        <div class="subscribe" data-href="http://savetogether.azurewebsites.net/" data-layout="button" data-size="small" data-mobile-iframe="true" style="display: inline-block;">
+            <a class="fb-xfbml-parse-ignore" target="_blank"
+               href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fsavetogether.azurewebsites.net%2F&%2F&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=1493332047394348&amp;src=sdkpreparse">Subscribe</a>
         </div>
- }
+    } 
     @using (Html.BeginForm("Map", "Home", new { ReturnUrl = "" }, FormMethod.Post, new { @class = "icon icon-ok button", role = "form" }))
     {
         <input id="Map" type="submit" class="icon icon-ok button" style="border: none; margin: 0;" value="Watch problem regions">

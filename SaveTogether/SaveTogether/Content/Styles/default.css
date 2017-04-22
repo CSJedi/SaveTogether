@@ -7,7 +7,7 @@ html, body
 body {
     margin: 0px;
     padding: 0px;
-    background: #EBEBEB url(../Images/bg01.png) repeat;
+    background: #EBEBEB url(/Content/Images/bg01.png) repeat;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 12pt;
     font-weight: 300;
@@ -93,7 +93,7 @@ hr
 /** WRAPPER */
 
 #wrapper {
-	background: #FFFFFF url(../Images/bg01.png) repeat;
+	background: #FFFFFF url(/Content/Images/bg01.png) repeat;
 }
 
 .container
@@ -202,7 +202,7 @@ hr
 	#menu .current_page_item a
 	{
 		
-		background: #FFFFFF url(../Images/bg01.png) repeat;
+		background: #FFFFFF url(/Content/Images/bg01.png) repeat;
 		color: #333;
 	}
 
@@ -260,27 +260,24 @@ hr
 /*********************************************************************************/
 
 
-#header-wrapper
-{
-
-	overflow: hidden;
-	padding-top: 450px;
-	height: 150px;
-	background: url('../Images/header.jpg') no-repeat top center;
-	background-size: 100% 100%;
+#header-wrapper {
+    overflow: hidden;
+    padding-top: 450px;
+    height: 150px;
+    background: url('/Content/Images/header.jpg') no-repeat top center;
+    background-size:cover;
 }
 
-#header-wrapper:before
-{
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: url('../Images/bg01.png');
-	opacity: .5;
-}
+    #header-wrapper:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('/Content/Images/bg01.png');
+        opacity: .5;
+    }
 
 #header-wrapper2
 {
@@ -313,12 +310,11 @@ hr
 /* Portfolio                                                                     */
 /*********************************************************************************/
 
-	#portfolio-wrapper
-	{
-		background: #EBEBEB url(../Images/bg01.png) repeat;
-		border-top: 1px solid #D4D4D4;
-		padding: 5em 0em 3em 0em;
-	}
+#portfolio-wrapper {
+    background: #EBEBEB url(/Content/Images/bg01.png) repeat;
+    border-top: 1px solid #D4D4D4;
+    padding: 5em 0em 3em 0em;
+}
 	
 	#portfolio
 	{
@@ -487,3 +483,28 @@ hr
     form{
         display: inline-block;
     }
+
+    .fb-xfbml-parse-ignore {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.1em;
+    display: inline-block;
+    padding: 0.50em 3em 0.50em 2em;
+    background: #669900;
+    letter-spacing: 0.20em;
+}
+    .form-group input {
+    max-width: 270px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #a2a2a2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.26);
+}
+    *:focus {
+    outline: none;
+}
+.icon.button:focus {
+    
+}
