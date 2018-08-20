@@ -167,8 +167,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Worldpay.Sdk">
-      <HintPath>E:\worldpay-lib-dotnet-master\worldpay-lib-dotnet-3-5\Worldpay.Sdk\bin\Worldpay.Sdk.dll</HintPath>
+    <Reference Include="Worldpay.Sdk, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Worldpay.Sdk.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
